@@ -1,11 +1,14 @@
 package com.example.maytheforcebewith_johnnylee.ui.main
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.maytheforcebewith_johnnylee.base.BaseViewModel
+import com.example.maytheforcebewith_johnnylee.base.UseCaseResult
 import com.example.maytheforcebewith_johnnylee.model.people.People
 import com.example.maytheforcebewith_johnnylee.network.PeopleApi
 import com.example.maytheforcebewith_johnnylee.ui.main.repository.MainRepository
+import com.example.maytheforcebewith_johnnylee.ui.main.repository.MainRepositoryImpl
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -15,7 +18,7 @@ class MainViewModel : BaseViewModel() {
     @Inject
     lateinit var peopleApi:PeopleApi
 
-    private val repository by lazy { MainRepository(peopleApi) }
+    private val repository by lazy { MainRepositoryImpl(peopleApi) }
 
     val peopleList = MutableLiveData<List<People>>().apply { value = mutableListOf() }
 
@@ -24,10 +27,18 @@ class MainViewModel : BaseViewModel() {
     }
 
     internal suspend fun get() {
-        withContext(Dispatchers.IO) {
-            val response = repository.getPeople()
-            peopleList.postValue(response)
+        val result = withContext(Dispatchers.IO) {
+            repository.getPeople()
+        }
 
+        when(result){
+            is UseCaseResult.Success -> {
+                peopleList.value = result.data
+                Log.d("DATA", result.data.toString())
+            }
+            is UseCaseResult.Error -> {
+                Log.d("ERROR", result.exception.message!!)
+            }
         }
     }
 
