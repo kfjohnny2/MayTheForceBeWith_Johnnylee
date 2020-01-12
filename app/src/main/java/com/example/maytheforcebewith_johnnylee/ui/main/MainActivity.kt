@@ -23,6 +23,9 @@ class MainActivity : AppCompatActivity() {
         binding.mainViewModel = viewModel
 
         configuraRecyclerView()
+        binding.btLoadMore.setOnClickListener {
+            viewModel.get()
+        }
     }
 
     private fun configuraRecyclerView() {

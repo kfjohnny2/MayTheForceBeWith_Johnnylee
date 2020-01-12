@@ -1,8 +1,11 @@
 package com.example.maytheforcebewith_johnnylee.network
 
+import com.example.maytheforcebewith_johnnylee.BuildConfig
 import com.example.maytheforcebewith_johnnylee.base.model.Data
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Url
 
 interface PeopleApi {
 
@@ -11,4 +14,10 @@ interface PeopleApi {
      */
     @GET("people")
     suspend fun getPeople(): Response<Data>
+
+    /**
+     * Get the list of the people from the API
+     */
+    @GET
+    suspend fun getPeople(@Url nextUrl : String): Response<Data>
 }

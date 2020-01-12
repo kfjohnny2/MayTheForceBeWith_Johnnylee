@@ -7,5 +7,6 @@ import com.example.maytheforcebewith_johnnylee.network.PeopleApi
 import retrofit2.Response
 
 interface MainRepository{
-    open suspend fun getPeople() : UseCaseResult<List<People>>
+    open suspend fun getPeople() : UseCaseResult<Data>
+    open suspend fun getPeople(nextUrl: String) : UseCaseResult<Data>
 }

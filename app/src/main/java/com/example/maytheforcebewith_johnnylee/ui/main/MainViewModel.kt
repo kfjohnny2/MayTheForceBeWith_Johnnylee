@@ -21,23 +21,36 @@ class MainViewModel : BaseViewModel() {
     private val repository by lazy { MainRepositoryImpl(peopleApi) }
 
     val peopleList = MutableLiveData<List<People>>().apply { value = mutableListOf() }
-
+    val nextUrl = MutableLiveData<String>().apply { value = "firstPage" }
+    val offset = MutableLiveData<Int>().apply { value = 0 }
     init {
-        viewModelScope.launch(Dispatchers.Main) { get() }
+        get()
     }
 
-    internal suspend fun get() {
-        val result = withContext(Dispatchers.IO) {
-            repository.getPeople()
-        }
+    fun get() {
+        viewModelScope.launch {
 
-        when(result){
-            is UseCaseResult.Success -> {
-                peopleList.value = result.data
-                Log.d("DATA", result.data.toString())
+            val result = withContext(Dispatchers.IO) {
+                when {
+                    nextUrl.value == "firstPage" -> repository.getPeople()
+                    !nextUrl.value.isNullOrBlank() -> {
+                        repository.getPeople(nextUrl.value!!)
+                    }
+                    else -> UseCaseResult.Error(Throwable("End of list"))
+                }
             }
-            is UseCaseResult.Error -> {
-                Log.d("ERROR", result.exception.message!!)
+
+            when(result){
+                is UseCaseResult.Success -> {
+                    peopleList.value = result.data.results
+                    offset.value?.plus(result.data.results.size)
+                    nextUrl.value = result.data.nextUrl
+
+                    Log.d("DATA", result.data.toString())
+                }
+                is UseCaseResult.Error -> {
+                    Log.d("ERROR", result.exception.message!!)
+                }
             }
         }
     }
