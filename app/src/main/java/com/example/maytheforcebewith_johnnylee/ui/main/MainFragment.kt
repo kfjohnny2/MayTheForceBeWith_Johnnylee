@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.maytheforcebewith_johnnylee.R
@@ -37,8 +39,15 @@ class MainFragment : Fragment() {
         return binding.root
     }
 
+    private fun navigateToDetails(personDetailsUrl : String){
+        val directions = MainFragmentDirections.actionMainFragmentToDetailsFragment()
+        directions.personUrl = personDetailsUrl
+        binding.root.findNavController().navigate(directions)
+    }
+
     private fun configuraRecyclerView() {
-        binding.rvPeople.adapter = PeopleAdapter(mutableListOf())
+        binding.rvPeople.adapter = PeopleAdapter(
+            mutableListOf()) { person : String  -> navigateToDetails(person)}
         with(binding.rvPeople) {
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)

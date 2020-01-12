@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.example.maytheforcebewith_johnnylee.injection.components.DaggerViewModelInjector
 import com.example.maytheforcebewith_johnnylee.injection.components.ViewModelInjector
 import com.example.maytheforcebewith_johnnylee.injection.module.NetworkModule
+import com.example.maytheforcebewith_johnnylee.ui.details.DetailsViewModel
 import com.example.maytheforcebewith_johnnylee.ui.main.MainViewModel
 
 open class BaseViewModel : ViewModel(){
@@ -22,6 +23,7 @@ open class BaseViewModel : ViewModel(){
     private fun inject() {
         when (this) {
             is MainViewModel -> injectorApi.inject(this)
+            is DetailsViewModel -> injectorApi.inject(this)
         }
     }
 }

@@ -9,7 +9,7 @@ import com.example.maytheforcebewith_johnnylee.databinding.ItemPeopleBinding
 import com.example.maytheforcebewith_johnnylee.model.people.People
 import com.example.maytheforcebewith_johnnylee.util.helpers.AdapterItemsContract
 
-class PeopleAdapter(private var people: MutableList<People>) : RecyclerView.Adapter<PeopleAdapter.PeoplesViewHolder>(),
+class PeopleAdapter(private var people: MutableList<People>, val clickListener : (String) -> Unit) : RecyclerView.Adapter<PeopleAdapter.PeoplesViewHolder>(),
     AdapterItemsContract {
 
     override fun replaceItems(list: List<*>) {
@@ -31,7 +31,7 @@ class PeopleAdapter(private var people: MutableList<People>) : RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: PeoplesViewHolder, position: Int) {
-        holder.bind(people[position])
+        holder.bind(people[position], clickListener)
     }
 
     override fun getItemCount(): Int {
@@ -39,8 +39,9 @@ class PeopleAdapter(private var people: MutableList<People>) : RecyclerView.Adap
     }
     class PeoplesViewHolder(val binding: ItemPeopleBinding) : RecyclerView.ViewHolder(binding.root) {
         private val peopleViewModel = PeopleItemViewModel()
-        fun bind(people: People) {
+        fun bind(people: People, clickListener: (String) -> Unit) {
             peopleViewModel.bind(people)
+            binding.root.setOnClickListener { clickListener(people.url)}
             binding.peopleViewModel = peopleViewModel
             binding.executePendingBindings()
         }
