@@ -7,7 +7,6 @@ import com.example.maytheforcebewith_johnnylee.base.BaseViewModel
 import com.example.maytheforcebewith_johnnylee.base.UseCaseResult
 import com.example.maytheforcebewith_johnnylee.model.people.People
 import com.example.maytheforcebewith_johnnylee.network.PeopleApi
-import com.example.maytheforcebewith_johnnylee.ui.main.repository.MainRepository
 import com.example.maytheforcebewith_johnnylee.ui.main.repository.MainRepositoryImpl
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

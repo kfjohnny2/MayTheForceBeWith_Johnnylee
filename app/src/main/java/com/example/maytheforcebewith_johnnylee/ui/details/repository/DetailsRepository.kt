@@ -4,6 +4,6 @@ import com.example.maytheforcebewith_johnnylee.base.UseCaseResult
 import com.example.maytheforcebewith_johnnylee.model.people.People
 
 interface DetailsRepository {
-    open suspend fun getPerson(personUrl: String) : UseCaseResult<People>
+    suspend fun getPerson(personUrl: String) : UseCaseResult<People>
 
 }

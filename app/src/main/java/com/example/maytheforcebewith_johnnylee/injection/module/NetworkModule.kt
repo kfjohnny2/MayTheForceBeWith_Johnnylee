@@ -41,8 +41,6 @@ object NetworkModule {
 
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
-//        val header =
-//            Interceptor { it.proceed(it.request().newBuilder().addHeader("Authorization", getAccessToken()!!).build()) }
         val httpClient = OkHttpClient.Builder()
 
         httpClient.readTimeout(230, TimeUnit.SECONDS)
@@ -52,14 +50,6 @@ object NetworkModule {
         if (BuildConfig.DEBUG){
             httpClient.addInterceptor(logging)
         }
-
-//        httpClient.addInterceptor(header)
-
-//        val tokenApi =
-//            retrofit2.Retrofit.Builder().baseUrl(IDENTITY_URL).addConverterFactory(GsonConverterFactory.create(gson))
-//                .client(httpClient.build()).build().create(TokenApi::class.java)
-//
-//        httpClient.authenticator(TokenAuthenticator(tokenApi))
 
         return Retrofit.Builder()
             .baseUrl(API_URL)
