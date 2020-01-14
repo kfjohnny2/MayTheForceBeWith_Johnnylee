@@ -3,8 +3,24 @@ package com.example.maytheforcebewith_johnnylee.ui.details.repository
 import com.example.maytheforcebewith_johnnylee.base.UseCaseResult
 import com.example.maytheforcebewith_johnnylee.model.people.People
 import com.example.maytheforcebewith_johnnylee.network.PeopleApi
+import okhttp3.Response
+import retrofit2.Call
 
 open class DetailsRepositoryImpl(private val peopleApi: PeopleApi) : DetailsRepository {
+    override suspend fun postFavorite(favoritePerson: People): UseCaseResult<Response> {
+        return try {
+            val request = peopleApi.postFavorite(favoritePerson)
+            val response = request.execute()
+            if (response.isSuccessful) {
+                UseCaseResult.Success(response.raw())
+            } else {
+                UseCaseResult.Error(Throwable(response.message()))
+            }
+        } catch (ex: Exception) {
+            UseCaseResult.Error(ex)
+        }
+    }
+
     override suspend fun getPerson(personUrl: String): UseCaseResult<People> {
         return try {
             val result = peopleApi.getPerson(personUrl)

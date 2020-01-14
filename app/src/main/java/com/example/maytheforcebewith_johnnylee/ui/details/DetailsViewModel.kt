@@ -23,6 +23,8 @@ class DetailsViewModel : BaseViewModel() {
 
     val personData = MutableLiveData<People>().apply { value = null }
 
+    val successRequest = MutableLiveData<Int>().apply { value = 0 }
+
     fun getPerson(personUrl: String) {
         viewModelScope.launch {
 
@@ -33,6 +35,26 @@ class DetailsViewModel : BaseViewModel() {
             when(result){
                 is UseCaseResult.Success -> {
                     personData.value = result.data
+                    successRequest.value = 1
+                    Log.d("DATA", result.data.toString())
+                }
+                is UseCaseResult.Error -> {
+                    successRequest.value = -1
+                    Log.d("ERROR", result.exception.message!!)
+                }
+            }
+        }
+    }
+
+    fun postFavorite() {
+        viewModelScope.launch {
+
+            val result = withContext(Dispatchers.IO) {
+                repository.postFavorite(personData.value!!)
+            }
+
+            when(result){
+                is UseCaseResult.Success -> {
                     Log.d("DATA", result.data.toString())
                 }
                 is UseCaseResult.Error -> {
@@ -41,5 +63,4 @@ class DetailsViewModel : BaseViewModel() {
             }
         }
     }
-    // TODO: Implement the ViewModel
 }

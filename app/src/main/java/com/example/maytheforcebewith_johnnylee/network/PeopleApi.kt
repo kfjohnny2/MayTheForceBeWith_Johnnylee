@@ -2,10 +2,9 @@ package com.example.maytheforcebewith_johnnylee.network
 
 import com.example.maytheforcebewith_johnnylee.base.model.Data
 import com.example.maytheforcebewith_johnnylee.model.people.People
+import retrofit2.Call
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Url
+import retrofit2.http.*
 
 interface PeopleApi {
 
@@ -27,4 +26,10 @@ interface PeopleApi {
      */
     @GET
     suspend fun getPerson(@Url personUrl : String): Response<People>
+
+    /**
+     * Post character as favorite
+     */
+    @POST
+    suspend fun postFavorite(@Body favoritePerson : People, @Url webhookUrl: String = "https://webhook.site/3a242483-95d7-435d-a667-dab9cf18255a"): Call<People>
 }

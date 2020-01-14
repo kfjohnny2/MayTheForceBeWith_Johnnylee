@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 
@@ -34,7 +35,18 @@ class DetailsFragment : Fragment() {
         val person = arguments?.getString("personUrl")
 
         person?.let { viewModel.getPerson(it) }
+        binding.cbFavorite.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked){
+                viewModel.postFavorite()
+            }
+        }
 
+        viewModel.successRequest.observe(this, Observer {
+            when(it){
+                1 -> binding.cbFavorite.isChecked = true
+                -1 -> binding.cbFavorite.isChecked = false
+            }
+        })
         return binding.root
     }
 
