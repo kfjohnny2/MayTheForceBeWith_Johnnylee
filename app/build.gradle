@@ -22,12 +22,14 @@ android {
     }
     buildTypes {
         def API_URL = "API_URL"
-
+        def WEBHOOK_URL = "WEBHOOK_URL"
         debug {
             buildConfigField "String", API_URL, '"https://swapi.co/api/"'
+            buildConfigField "String", WEBHOOK_URL, '"https://webhook.site/3a242483-95d7-435d-a667-dab9cf18255a"'
         }
         release {
             buildConfigField "String", API_URL, '"https://swapi.co/api/"'
+            buildConfigField "String", WEBHOOK_URL, '"https://webhook.site/3a242483-95d7-435d-a667-dab9cf18255a"'
 
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'

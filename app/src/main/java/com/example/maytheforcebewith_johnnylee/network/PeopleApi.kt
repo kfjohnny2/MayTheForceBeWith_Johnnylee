@@ -1,5 +1,6 @@
 package com.example.maytheforcebewith_johnnylee.network
 
+import com.example.maytheforcebewith_johnnylee.BuildConfig.WEBHOOK_URL
 import com.example.maytheforcebewith_johnnylee.base.model.Data
 import com.example.maytheforcebewith_johnnylee.model.people.People
 import retrofit2.Call
@@ -31,5 +32,5 @@ interface PeopleApi {
      * Post character as favorite
      */
     @POST
-    suspend fun postFavorite(@Body favoritePerson : People, @Url webhookUrl: String = "https://webhook.site/3a242483-95d7-435d-a667-dab9cf18255a"): Response<Void>
+    suspend fun postFavorite(@Body favoritePerson : People, @Url webhookUrl: String = WEBHOOK_URL): Response<Void>
 }
