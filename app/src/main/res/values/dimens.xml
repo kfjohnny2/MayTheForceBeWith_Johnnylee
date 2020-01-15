@@ -3,4 +3,7 @@
     <dimen name="medium_text_size">18sp</dimen>
     <dimen name="normal_text_size">16sp</dimen>
     <dimen name="default_padding">8dp</dimen>
+    <dimen name="card_default_height">90dp</dimen>
+    <dimen name="medium_margin">16dp</dimen>
+    <dimen name="tiny_margin">4dp</dimen>
 </resources>

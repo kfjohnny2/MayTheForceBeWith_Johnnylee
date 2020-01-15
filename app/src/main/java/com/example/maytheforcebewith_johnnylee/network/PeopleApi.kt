@@ -3,6 +3,7 @@ package com.example.maytheforcebewith_johnnylee.network
 import com.example.maytheforcebewith_johnnylee.BuildConfig.WEBHOOK_URL
 import com.example.maytheforcebewith_johnnylee.base.model.Data
 import com.example.maytheforcebewith_johnnylee.model.people.People
+import com.example.maytheforcebewith_johnnylee.util.URL_PERSON
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
@@ -12,7 +13,7 @@ interface PeopleApi {
     /**
      * Get the list of the people from the API
      */
-    @GET("people")
+    @GET(URL_PERSON)
     suspend fun getPeople(): Response<Data>
 
     /**

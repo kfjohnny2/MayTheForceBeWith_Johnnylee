@@ -9,7 +9,7 @@ import com.example.maytheforcebewith_johnnylee.databinding.ItemPeopleBinding
 import com.example.maytheforcebewith_johnnylee.model.people.People
 import com.example.maytheforcebewith_johnnylee.util.helpers.AdapterItemsContract
 
-class PeopleAdapter(private var people: MutableList<People>, val clickListener : (String) -> Unit) : RecyclerView.Adapter<PeopleAdapter.PeoplesViewHolder>(),
+class PeopleAdapter(private var people: MutableList<People>, private val clickListener : (String) -> Unit) : RecyclerView.Adapter<PeopleAdapter.PeoplesViewHolder>(),
     AdapterItemsContract {
 
     override fun replaceItems(list: List<*>) {

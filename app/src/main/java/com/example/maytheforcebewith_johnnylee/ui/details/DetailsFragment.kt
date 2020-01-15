@@ -1,30 +1,25 @@
 package com.example.maytheforcebewith_johnnylee.ui.details
 
-import android.content.Context
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-
+import androidx.lifecycle.ViewModelProviders
 import com.example.maytheforcebewith_johnnylee.R
-import com.example.maytheforcebewith_johnnylee.application.MayTheForceBeWithApplication
 import com.example.maytheforcebewith_johnnylee.databinding.FragmentDetailsBinding
-import com.example.maytheforcebewith_johnnylee.util.helpers.*
+import com.example.maytheforcebewith_johnnylee.util.FIELD_PERSON_URL
+import com.example.maytheforcebewith_johnnylee.util.PREFERENCE_FAVORITE_LIST
+import com.example.maytheforcebewith_johnnylee.util.helpers.getPreferencesSet
+import com.example.maytheforcebewith_johnnylee.util.helpers.setPreferencesSet
 import kotlinx.android.synthetic.main.fragment_details.*
 
 class DetailsFragment : Fragment() {
     private lateinit var binding: FragmentDetailsBinding
     private val viewModel by lazy { ViewModelProviders.of(this).get(DetailsViewModel::class.java) }
     lateinit var favoriteListPreference: MutableSet<String>
-
-    companion object {
-        fun newInstance() = DetailsFragment()
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,13 +30,13 @@ class DetailsFragment : Fragment() {
 
         binding.detailsViewModel = viewModel
 
-        favoriteListPreference = if(getPreferencesSet("favoriteList", context!!) != null){
-            getPreferencesSet("favoriteList", context!!)!!
+        favoriteListPreference = if(getPreferencesSet(PREFERENCE_FAVORITE_LIST, context!!) != null){
+            getPreferencesSet(PREFERENCE_FAVORITE_LIST, context!!)!!
         }else{
             mutableSetOf()
         }
 
-        val person = arguments?.getString("personUrl")
+        val person = arguments?.getString(FIELD_PERSON_URL)
 
         person?.let { viewModel.getPerson(it) }
 
@@ -60,7 +55,7 @@ class DetailsFragment : Fragment() {
                         character
                     )
                 }
-                setPreferencesSet(favoriteListPreference.toList(), "favoriteList", true, context!!)
+                setPreferencesSet(favoriteListPreference.toList(), PREFERENCE_FAVORITE_LIST, true, context!!)
             }
         }
         viewModel.successRequest.observe(this, Observer {
@@ -69,7 +64,7 @@ class DetailsFragment : Fragment() {
                     binding.cbFavorite.isChecked = true
                     viewModel.personData.value?.name?.let { character ->
                         favoriteListPreference.add(character)
-                        setPreferencesSet(favoriteListPreference.toList(), "favoriteList", true, context!!)
+                        setPreferencesSet(favoriteListPreference.toList(), PREFERENCE_FAVORITE_LIST, true, context!!)
                     }
                 }
                 -1 -> binding.cbFavorite.isChecked = false
