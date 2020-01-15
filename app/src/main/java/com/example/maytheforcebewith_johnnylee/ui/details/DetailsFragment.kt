@@ -35,18 +35,18 @@ class DetailsFragment : Fragment() {
         val person = arguments?.getString("personUrl")
 
         person?.let { viewModel.getPerson(it) }
-        binding.cbFavorite.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked){
-                viewModel.postFavorite()
-            }
-        }
-
-        viewModel.successRequest.observe(this, Observer {
-            when(it){
-                1 -> binding.cbFavorite.isChecked = true
-                -1 -> binding.cbFavorite.isChecked = false
-            }
-        })
+//        binding.cbFavorite.setOnCheckedChangeListener { _, isChecked ->
+//            if (isChecked){
+//                viewModel.postFavorite()
+//            }
+//        }
+//
+//        viewModel.successRequest.observe(this, Observer {
+//            when(it){
+//                1 -> binding.cbFavorite.isChecked = true
+//                -1 -> binding.cbFavorite.isChecked = false
+//            }
+//        })
         return binding.root
     }
 

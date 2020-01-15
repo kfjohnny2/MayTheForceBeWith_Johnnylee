@@ -6,7 +6,7 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.maytheforcebewith_johnnylee.ui.main.MainFragment"
-        android:label="MainFragment" >
+        android:label="Home">
         <action
             android:id="@+id/action_mainFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
@@ -14,10 +14,10 @@
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.example.maytheforcebewith_johnnylee.ui.details.DetailsFragment"
-        android:label="DetailsFragment" >
+        android:label="Details">
         <argument
             android:name="personUrl"
-            app:argType="string"
-            android:defaultValue='""' />
+            android:defaultValue='""'
+            app:argType="string" />
     </fragment>
 </navigation>

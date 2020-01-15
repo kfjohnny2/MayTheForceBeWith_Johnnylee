@@ -6,6 +6,6 @@ import okhttp3.Response
 
 interface DetailsRepository {
     suspend fun getPerson(personUrl: String) : UseCaseResult<People>
-    suspend fun postFavorite(favoritePerson: People) : UseCaseResult<Response>
+    suspend fun postFavorite(favoritePerson: People) : UseCaseResult<People>
 
 }

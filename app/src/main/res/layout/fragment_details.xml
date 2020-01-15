@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:textSize="30sp"
             android:textStyle="bold"
+            android:textAlignment="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/cbFavorite"
             app:layout_constraintTop_toTopOf="parent"
@@ -31,6 +32,76 @@
             android:text="Favorite"
             app:layout_constraintTop_toTopOf="@id/txtCharacterName"
             app:layout_constraintBottom_toBottomOf="@id/txtCharacterName"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/txtCharacterHeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/txtCharacterName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cbFavorite"
+            android:text="@{detailsViewModel.personData.height}"
+            />
+
+        <TextView
+            android:id="@+id/txtCharacterWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/txtCharacterHeight"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cbFavorite"
+            android:text="@{detailsViewModel.personData.mass}"
+            />
+
+        <TextView
+            android:id="@+id/txtCharacterHair"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/txtCharacterWeight"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cbFavorite"
+            android:text="@{detailsViewModel.personData.hairColor}"
+            />
+        <TextView
+            android:id="@+id/txtCharacterSkin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/txtCharacterHair"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cbFavorite"
+            android:text="@{detailsViewModel.personData.skinColor}"
+            />
+
+        <TextView
+            android:id="@+id/txtCharacterEyeColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/txtCharacterSkin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cbFavorite"
+            android:text="@{detailsViewModel.personData.eyeColor}"
+            />
+
+        <TextView
+            android:id="@+id/txtCharacterBirth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/txtCharacterEyeColor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cbFavorite"
+            android:text="@{detailsViewModel.personData.birthYear}"
+            />
+
+        <TextView
+            android:id="@+id/txtCharacterGender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/txtCharacterBirth"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cbFavorite"
+            android:text="@{detailsViewModel.personData.gender}"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

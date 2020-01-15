@@ -31,5 +31,5 @@ interface PeopleApi {
      * Post character as favorite
      */
     @POST
-    suspend fun postFavorite(@Body favoritePerson : People, @Url webhookUrl: String = "https://webhook.site/3a242483-95d7-435d-a667-dab9cf18255a"): Call<People>
+    suspend fun postFavorite(@Body favoritePerson : People, @Url webhookUrl: String = "https://webhook.site/3a242483-95d7-435d-a667-dab9cf18255a"): Response<People>
 }
