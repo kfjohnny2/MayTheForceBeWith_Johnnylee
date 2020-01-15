@@ -20,5 +20,5 @@ data class People(
     @SerializedName(FIELD_PEOPLE_STARSHIPS) val starships: List<String>,
     @SerializedName(FIELD_PEOPLE_CREATED) val created: String,
     @SerializedName(FIELD_PEOPLE_EDITED) val edited: String,
-    @SerializedName(FIELD_PERSON_URL) val url: String
+    @SerializedName(FIELD_PEOPLE_URL) val url: String
 )
