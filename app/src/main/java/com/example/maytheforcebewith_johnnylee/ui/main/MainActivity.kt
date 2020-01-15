@@ -6,6 +6,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.example.maytheforcebewith_johnnylee.R
+import com.example.maytheforcebewith_johnnylee.util.helpers.setPreferences
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(tbMain)
+
 
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
 

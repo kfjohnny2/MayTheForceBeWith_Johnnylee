@@ -11,7 +11,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.details.DetailsFragment">
+        tools:context=".ui.details.DetailsFragment"
+        android:padding="@dimen/default_padding">
 
         <TextView
             android:id="@+id/txtCharacterName"
@@ -32,8 +33,7 @@
             android:text="Favorite"
             app:layout_constraintTop_toTopOf="@id/txtCharacterName"
             app:layout_constraintBottom_toBottomOf="@id/txtCharacterName"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="gone"/>
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
             android:id="@+id/txtCharacterHeight"

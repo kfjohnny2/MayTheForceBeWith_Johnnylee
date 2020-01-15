@@ -7,11 +7,11 @@ import okhttp3.Response
 import retrofit2.Call
 
 open class DetailsRepositoryImpl(private val peopleApi: PeopleApi) : DetailsRepository {
-    override suspend fun postFavorite(favoritePerson: People): UseCaseResult<People> {
+    override suspend fun postFavorite(favoritePerson: People): UseCaseResult<Int> {
         return try {
             val request = peopleApi.postFavorite(favoritePerson)
             if (request.isSuccessful) {
-                UseCaseResult.Success(request.body()!!)
+                UseCaseResult.Success(request.code())
             } else {
                 UseCaseResult.Error(Throwable(request.message()))
             }

@@ -35,11 +35,9 @@ class DetailsViewModel : BaseViewModel() {
             when(result){
                 is UseCaseResult.Success -> {
                     personData.value = result.data
-                    successRequest.value = 1
                     Log.d("DATA", result.data.toString())
                 }
                 is UseCaseResult.Error -> {
-                    successRequest.value = -1
                     Log.d("ERROR", result.exception.message!!)
                 }
             }
@@ -55,9 +53,10 @@ class DetailsViewModel : BaseViewModel() {
 
             when(result){
                 is UseCaseResult.Success -> {
-                    Log.d("DATA", result.data.toString())
+                    successRequest.value = 1
                 }
                 is UseCaseResult.Error -> {
+                    successRequest.value = -1
                     Log.d("ERROR", result.exception.message!!)
                 }
             }
