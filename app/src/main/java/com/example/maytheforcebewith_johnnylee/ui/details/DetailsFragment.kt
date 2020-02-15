@@ -9,11 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.maytheforcebewith_johnnylee.R
+import com.example.maytheforcebewith_johnnylee.application.MayTheForceBeWithApplication
 import com.example.maytheforcebewith_johnnylee.databinding.FragmentDetailsBinding
 import com.example.maytheforcebewith_johnnylee.util.FIELD_PERSON_URL
 import com.example.maytheforcebewith_johnnylee.util.PREFERENCE_FAVORITE_LIST
 import com.example.maytheforcebewith_johnnylee.util.helpers.getPreferencesSet
 import com.example.maytheforcebewith_johnnylee.util.helpers.setPreferencesSet
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.inappmessaging.FirebaseInAppMessaging
 import kotlinx.android.synthetic.main.fragment_details.*
 
 class DetailsFragment : Fragment() {
@@ -70,6 +73,9 @@ class DetailsFragment : Fragment() {
                 -1 -> binding.cbFavorite.isChecked = false
             }
         })
+
+        FirebaseInAppMessaging.getInstance().triggerEvent("main_screen")
+
         return binding.root
     }
 

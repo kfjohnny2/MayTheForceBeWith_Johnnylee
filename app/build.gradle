@@ -1,9 +1,10 @@
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+
+apply plugin: 'com.google.gms.google-services'
 apply plugin: "androidx.navigation.safeargs"
 
 android {
@@ -67,6 +68,9 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.2.1'
 
+    implementation 'com.google.firebase:firebase-analytics:17.2.2'
+    implementation 'com.google.firebase:firebase-inappmessaging-display:19.0.3'
+    implementation 'com.google.firebase:firebase-inappmessaging:19.0.3'
     // Dagger 2
     implementation "com.google.dagger:dagger:$dagger2_version"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'

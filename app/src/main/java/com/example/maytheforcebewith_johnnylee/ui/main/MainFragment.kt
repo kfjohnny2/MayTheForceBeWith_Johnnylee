@@ -13,8 +13,11 @@ import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.maytheforcebewith_johnnylee.R
+import com.example.maytheforcebewith_johnnylee.application.MayTheForceBeWithApplication
 import com.example.maytheforcebewith_johnnylee.databinding.FragmentMainBinding
 import com.example.maytheforcebewith_johnnylee.ui.main.adapter.PeopleAdapter
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.inappmessaging.FirebaseInAppMessaging
 
 /**
  * A simple [Fragment] subclass.
@@ -36,7 +39,13 @@ class MainFragment : Fragment() {
         binding.btLoadMore.setOnClickListener {
             viewModel.get()
         }
+
         return binding.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
     }
 
     private fun navigateToDetails(personDetailsUrl : String){

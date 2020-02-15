@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "511725081684",
+    "firebase_url": "https://maytheforcebewithjohnnylee.firebaseio.com",
+    "project_id": "maytheforcebewithjohnnylee",
+    "storage_bucket": "maytheforcebewithjohnnylee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:511725081684:android:9168a04208e1d6c94349c1",
+        "android_client_info": {
+          "package_name": "com.example.maytheforcebewith_johnnylee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "511725081684-vgf83v6gjg07mltb2rc1k97cm50o9330.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUEY1JffAuSzi7DSAdRoBAsuW5B1AKjkI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "511725081684-vgf83v6gjg07mltb2rc1k97cm50o9330.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
